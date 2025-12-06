@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>porfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Structural Skeleton</title>
+    <style>
+        /* --- VISUALIZATION TOOL (Delete this later) --- */
+        * { outline: 1px solid black; } /* Shows the edges of every box */
+
+        /* --- LAYOUT ENGINE --- */
+        
+        /* 1. Page Wrapper (Centers content) */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 2. Navigation (Flexbox: Left/Right split) */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            margin-bottom: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        /* 3. Hero Section (Grid: 2 Columns) */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr; /* Text takes 1.5, Image takes 1 */
+            gap: 40px;
+            align-items: center; /* Vertically center */
+            margin-bottom: 80px;
+            min-height: 300px;
+        }
+
+        .hero-img-wrapper {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Ensures image stays inside the wrapper */
+        img { max-width: 100%; height: auto; }
+
+        /* 4. Projects Section (Grid: Auto-fit columns) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 200px; /* Placeholder height */
+            padding: 10px;
+        }
+
+        /* 5. Footer (Centered) */
+        footer {
+            margin-top: 80px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* --- MOBILE LAYOUT --- */
+        @media (max-width: 768px) {
+            .hero-section {
+                grid-template-columns: 1fr; /* Stack vertically */
+            }
+            .hero-img-wrapper {
+                order: -1; /* Move image to top */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <nav>
+            <div class="logo">LOGO</div>
+            <ul class="nav-links">
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+                <li><a href="#">Link</a></li>
+            </ul>
+        </nav>
+
+        <main class="hero-section">
+            <div class="hero-text">
+                <h1>Main Headline</h1>
+                <h2>Sub Headline</h2>
+                <p>Introduction paragraph text.</p>
+                <button>Call to Action</button>
+            </div>
+
+            <div class="hero-img-wrapper">
+                <img src="" alt="Image Place">
+            </div>
+        </main>
+
+        <section>
+            <h2>Section Header</h2>
+            <div class="projects-grid">
+                
+                <article class="project-card">
+                    <div>
+                        <h3>Project Title</h3>
+                        <p>Description</p>
+                    </div>
+                    <div>Stack/Tags</div>
+                </article>
+
+                <article class="project-card">
+                    <div>
+                        <h3>Project Title</h3>
+                        <p>Description</p>
+                    </div>
+                    <div>Stack/Tags</div>
+                </article>
+
+                <article class="project-card">
+                    <div>
+                        <h3>Project Title</h3>
+                        <p>Description</p>
+                    </div>
+                    <div>Stack/Tags</div>
+                </article>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>Footer Text</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
