@@ -3,165 +3,241 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>porfolio</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Structural Skeleton</title>
+    <title>Matcha & Panda Portfolio</title>
     <style>
-        /* --- VISUALIZATION TOOL (Delete this later) --- */
-        * { outline: 1px solid black; } /* Shows the edges of every box */
-
-        /* --- LAYOUT ENGINE --- */
-        
-        /* 1. Page Wrapper (Centers content) */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
+        /* --- RESET & VARIABLES --- */
+        :root {
+            --bg-paper: #fdfbf7;       /* Warm paper white/yellow */
+            --matcha-light: #d6e8cc;   /* Light green */
+            --matcha-dark: #7ea172;    /* Darker green text/borders */
+            --panda-black: #2c2c2c;    /* Soft black for text */
+            --panda-white: #ffffff;    /* Pure white for cards */
+            --spacing: 20px;
         }
 
-        /* 2. Navigation (Flexbox: Left/Right split) */
-        nav {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Clean minimal font */
+        }
+
+        body {
+            background-color: var(--bg-paper);
+            color: var(--panda-black);
+            line-height: 1.6;
+            padding: var(--spacing);
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- HEADER --- */
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 50px;
-            margin-bottom: 50px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-        }
-
-        /* 3. Hero Section (Grid: 2 Columns) */
-        .hero-section {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr; /* Text takes 1.5, Image takes 1 */
-            gap: 40px;
-            align-items: center; /* Vertically center */
             margin-bottom: 80px;
-            min-height: 300px;
         }
 
-        .hero-img-wrapper {
-            width: 100%;
-            height: 100%;
+        .logo {
+            font-weight: bold;
+            font-size: 1.2rem;
             display: flex;
-            justify-content: center;
             align-items: center;
+            gap: 10px;
         }
-        
-        /* Ensures image stays inside the wrapper */
-        img { max-width: 100%; height: auto; }
 
-        /* 4. Projects Section (Grid: Auto-fit columns) */
-        .projects-grid {
+        .logo span {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            background-color: var(--matcha-dark);
+            border-radius: 50%; /* Little matcha dot */
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--panda-black);
+            margin-left: 20px;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--matcha-dark);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            text-align: center;
+            margin-bottom: 100px;
+            padding: 60px 20px;
+            border: 2px dashed var(--matcha-light); /* Gentle border */
+            border-radius: 20px;
+            background-color: rgba(255,255,255, 0.5);
+        }
+
+        .panda-face {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        h1 span {
+            color: var(--matcha-dark);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .projects-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            border-left: 5px solid var(--matcha-dark);
+            padding-left: 15px;
+        }
+
+        .project-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            gap: 30px;
         }
 
         .project-card {
+            background-color: var(--panda-white);
+            border-radius: 15px;
+            padding: 30px;
+            border: 1px solid var(--matcha-light);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            height: 200px; /* Placeholder height */
-            padding: 10px;
         }
 
-        /* 5. Footer (Centered) */
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 5px 5px 0px var(--matcha-light);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .project-desc {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: var(--panda-black);
+            color: var(--panda-white);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            align-self: flex-start;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--matcha-dark);
+        }
+
+        /* --- FOOTER --- */
         footer {
             margin-top: 80px;
             text-align: center;
-            padding: 20px;
+            font-size: 0.8rem;
+            color: #888;
+            border-top: 1px solid var(--matcha-light);
+            padding-top: 20px;
         }
 
-        /* --- MOBILE LAYOUT --- */
-        @media (max-width: 768px) {
-            .hero-section {
-                grid-template-columns: 1fr; /* Stack vertically */
-            }
-            .hero-img-wrapper {
-                order: -1; /* Move image to top */
-            }
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
-
-        <nav>
-            <div class="logo">LOGO</div>
-            <ul class="nav-links">
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-                <li><a href="#">Link</a></li>
-            </ul>
-        </nav>
-
-        <main class="hero-section">
-            <div class="hero-text">
-                <h1>Main Headline</h1>
-                <h2>Sub Headline</h2>
-                <p>Introduction paragraph text.</p>
-                <button>Call to Action</button>
+        <header>
+            <div class="logo">
+                <span></span> PandaCode
             </div>
+            <nav>
+                <a href="#">Work</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+        </header>
 
-            <div class="hero-img-wrapper">
-                <img src="" alt="Image Place">
-            </div>
-        </main>
+        <section class="hero">
+            <span class="panda-face">🐼🍵</span>
+            <h1>Sipping <span class="highlight">Matcha</span>,<br> Building Web.</h1>
+            <p class="subtitle">I'm a minimalist developer. I build clean, efficient websites with the calmness of a panda.</p>
+        </section>
 
-        <section>
-            <h2>Section Header</h2>
-            <div class="projects-grid">
-                
-                <article class="project-card">
+        <section class="projects-section">
+            <h2>Selected Projects</h2>
+            
+            <div class="project-grid">
+                <div class="project-card">
                     <div>
-                        <h3>Project Title</h3>
-                        <p>Description</p>
+                        <div class="card-icon">🎋</div>
+                        <div class="project-title">Bamboo Analytics</div>
+                        <p class="project-desc">A dashboard for tracking growth. Minimal data visualization using pure CSS grids.</p>
                     </div>
-                    <div>Stack/Tags</div>
-                </article>
+                    <a href="#" class="btn">View Project</a>
+                </div>
 
-                <article class="project-card">
+                <div class="project-card">
                     <div>
-                        <h3>Project Title</h3>
-                        <p>Description</p>
+                        <div class="card-icon">🍙</div>
+                        <div class="project-title">RiceBall Recipe App</div>
+                        <p class="project-desc">A static site generator for cooking recipes. Fast, lightweight, and delicious.</p>
                     </div>
-                    <div>Stack/Tags</div>
-                </article>
+                    <a href="#" class="btn">View Project</a>
+                </div>
 
-                <article class="project-card">
+                <div class="project-card">
                     <div>
-                        <h3>Project Title</h3>
-                        <p>Description</p>
+                        <div class="card-icon">🍵</div>
+                        <div class="project-title">Matcha Timer</div>
+                        <p class="project-desc">A simple productivity timer to brew the perfect code sessions.</p>
                     </div>
-                    <div>Stack/Tags</div>
-                </article>
-
+                    <a href="#" class="btn">View Project</a>
+                </div>
             </div>
         </section>
 
         <footer>
-            <p>Footer Text</p>
+            <p>&copy; 2024 Built with 🍵 and HTML/CSS.</p>
         </footer>
-
     </div>
 
-</body>
-</html>
-
-    <script src="script.js"></script>
 </body>
 </html>
 
